@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import Input  from '../../components/UI/Input/Input';
+import Image from '../../components/UI/ImageComponent/ImageComponent';
 import { Form, Button } from 'semantic-ui-react';
 import { updatedObject, checkValidity } from '../../utility/utility';
 
@@ -110,9 +111,17 @@ class Signup extends Component {
             </Form>
         );
 
+        let imageClass = {
+            padding: '20px',
+            margin: '30px',
+            backgroundColor: 'white'
+        };
+
+
         return(
            <Aux>
-               {form}
+                <Image src='https://img.icons8.com/officel/80/000000/booking.png' size='small' circular={true} bordered={true} class={imageClass} />
+                {form}
            </Aux>
         );
     }

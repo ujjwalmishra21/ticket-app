@@ -4,7 +4,7 @@ import { Dimmer, Loader, Segment} from 'semantic-ui-react';
 const LoaderUI = () => (
     <Segment>
         <Dimmer active>
-            <Loader/>
+            <Loader size='medium'/>
         </Dimmer>
     </Segment>
 );

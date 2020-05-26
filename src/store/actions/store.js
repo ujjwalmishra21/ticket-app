@@ -32,21 +32,28 @@ export const fetchStores = (token, params) => {
             queryParams = `?zip=${params['zip']}`;
         else if(params['city'])
             queryParams = `?city=${params['city']}`
+     
+        const config = {headers:{'x-auth': token}};
         
-        const config = {headers: token};
+        axios.get('/getStores' + queryParams, config)
+            .then(response => {
 
-        try{
-            const response = await axios.get('/getStores' + queryParams, config);
-            if(response.data.status === 'success'){
-                console.log(response.data.message);
-                dispatch(fetchStoresSuccess(response.data.data));
-            }else{
-                dispatch(fetchStoresFail(response.data.message));
-            }
-            
-        }catch(err){
-            dispatch(fetchStoresFail(err.message));
-        }
+                if(response.data.status === 'success'){
+                    let data = []; 
+                    response.data.data.forEach(store => {
+                        data.push(store);
+                    })
+                                       
+                    dispatch(fetchStoresSuccess(data));
+                }else{
+                    dispatch(fetchStoresFail(response.data.message));
+                }
+                
+            }).catch((err)=>{
+                console.log(err);
+                dispatch(fetchStoresFail(err.message));
+            });
+        
 
     }
 }

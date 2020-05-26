@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect, Link} from 'react-router-dom';
 // import Signup from './containers/Signup/Signup';
 import { connect } from 'react-redux';
+import { Image } from 'semantic-ui-react';
 import './App.css';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
+import NavItems from './components/UI/NavItems/NavItems';
 import * as action from './store/actions/index';
+import NavItem from './components/UI/NavItems/NavItem/NavItem';
 
 const asyncSignUp = asyncComponent(() => {
   return import('./containers/Signup/Signup');
@@ -37,6 +40,16 @@ class App extends Component {
   }
 
   render(){
+    let navList = [
+      {
+        name:'login',
+        path:'/login'
+      }, 
+      {
+        name:'signup',
+        path:'/signup'
+      }];
+
     let route = (
       <Switch>
         <Route path="/otp" component={asyncOTP} />
@@ -48,10 +61,16 @@ class App extends Component {
     );
     if(this.props.isAuthenticated){
       console.log("HERE AUTH")
-      // let type = localStorage.getItem(this.props.userData.type);
-      // console.log(this.props.userData.type);
+      let type = localStorage.getItem(this.props.userData.type);
+      console.log(this.props.userData.type);
       // if(parseInt(type) === 1){
-        console.log("HERE type 1")
+        console.log("HERE type 1");
+        navList = [
+          {name:'home', path:'/'},
+          {name:'add store', path:'/addStore'},
+          {name: 'get store', path:'/getStore'}
+        ];
+
         route = (
           <Switch>
             
@@ -63,7 +82,8 @@ class App extends Component {
           </Switch>
         );
       // }else if(parseInt(type) === 2){
-      //   console.log("HERE")
+      //   console.log("HERE type 2");
+      //   navList = ['Home', 'Get Store']
       //   route = (
       //     <Switch>
             
@@ -73,7 +93,7 @@ class App extends Component {
       //     </Switch>
       //   );
       // }
-      console.log(route);
+      // console.log(route);
     
       
     }
@@ -81,8 +101,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-         
+          <div className="Navbar">
+            <NavItems navList={navList}/>
+          </div>
+        
           {route}
+         
           {/* <Link className="ui button" to="/signup">Signup</Link>
           <Link className="ui button" to="/login">Login</Link>
           <Link className="ui button" to="/otp">OTP</Link>

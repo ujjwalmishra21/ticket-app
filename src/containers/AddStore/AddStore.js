@@ -192,6 +192,7 @@ class AddStore extends Component{
 
         return (
             <Aux>
+                <h1>Add store</h1>
                 {form}
             </Aux>
         );

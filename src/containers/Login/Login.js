@@ -3,8 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
 import Input from '../../components/UI/Input/Input';
-
-import { Form, Button } from 'semantic-ui-react';
+import Image from '../../components/UI/ImageComponent/ImageComponent';
+import { Form, Button} from 'semantic-ui-react';
 import {checkValidity, updatedObject} from '../../utility/utility';
 import * as actions from '../../store/actions/index';
 
@@ -93,11 +93,17 @@ class Login extends Component{
         if(this.props.mobile_number && !this.props.loading){
             redirectPath = (<Redirect to="/otp" />)
         }
-       
+        
+        let imageClass = {
+            padding: '20px',
+            margin: '30px',
+            backgroundColor: 'white'
+        };
 
         return (
             <Aux>
                 {redirectPath}
+                <Image src='https://img.icons8.com/officel/80/000000/booking.png' size='small' circular='true' bordered='true' class={imageClass} />
                 {form}
             </Aux>
         );

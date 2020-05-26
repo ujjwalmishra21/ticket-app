@@ -12,7 +12,7 @@ const fetchStoresStart = (state,action) => {
 };
 
 const fetchStoresSuccess = (state, action) => {
- 
+    
     return updatedObject(state, {
         stores: action.stores,
         loading: false
@@ -20,6 +20,7 @@ const fetchStoresSuccess = (state, action) => {
 };
 
 const fetchStoresFail = (state, action) => {
+    
     return updatedObject(state, {loading: false});
 };
 
