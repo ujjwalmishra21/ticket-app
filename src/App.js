@@ -42,11 +42,11 @@ class App extends Component {
   render(){
     let navList = [
       {
-        name:'login',
+        name:'Login',
         path:'/login'
       }, 
       {
-        name:'signup',
+        name:'Signup',
         path:'/signup'
       }];
 
@@ -66,9 +66,10 @@ class App extends Component {
       // if(parseInt(type) === 1){
         console.log("HERE type 1");
         navList = [
-          {name:'home', path:'/'},
-          {name:'add store', path:'/addStore'},
-          {name: 'get store', path:'/getStore'}
+          {name:'Home', path:'/'},
+          {name:'Add Store', path:'/addStore'},
+          {name: 'Get Store', path:'/getStore'},
+          {name: 'Logout', path:'/logout'},
         ];
 
         route = (
@@ -100,18 +101,23 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <div className="Navbar">
-            <NavItems navList={navList}/>
-          </div>
+       
+          {/* <div className="Navbar"> */}
+            <NavItems navList={navList}>
+            <header className="App-header">
+              
+            {route}
+            </header>
+            </NavItems>
+          {/* </div> */}
         
-          {route}
+         
          
           {/* <Link className="ui button" to="/signup">Signup</Link>
           <Link className="ui button" to="/login">Login</Link>
           <Link className="ui button" to="/otp">OTP</Link>
           <Link className="ui button" to="/addStore">Add Store</Link> */}
-        </header>
+       
       </div>
     );
   }
