@@ -3,8 +3,7 @@ import { updatedObject } from '../../utility/utility';
 
 const initialState = {
     stores: [],
-    loading: false,
-    purchase: false
+    loading: false   
 };
 
 const fetchStoresStart = (state,action) => {
@@ -12,7 +11,6 @@ const fetchStoresStart = (state,action) => {
 };
 
 const fetchStoresSuccess = (state, action) => {
-    
     return updatedObject(state, {
         stores: action.stores,
         loading: false
@@ -20,7 +18,6 @@ const fetchStoresSuccess = (state, action) => {
 };
 
 const fetchStoresFail = (state, action) => {
-    
     return updatedObject(state, {loading: false});
 };
 

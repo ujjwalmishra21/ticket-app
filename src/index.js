@@ -6,18 +6,24 @@ import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import 'semantic-ui-css/semantic.min.css'
+import "react-datepicker/dist/react-datepicker.css";
 import './index.css';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import storeReducer from './store/reducers/store';
 import authReducer from './store/reducers/auth';
+import slotReducer from './store/reducers/slot';
+import bookingReducer from './store/reducers/booking';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducers = combineReducers({
   store: storeReducer,
-  auth: authReducer
+  auth: authReducer,
+  slot: slotReducer,
+  booking: bookingReducer
 });
 
 const store = createStore(rootReducers, composeEnhancers(

@@ -4,3 +4,26 @@
 .content{
     font-size: 14px !important;
 }
+.datepicker-section{
+    margin-bottom: 14px;
+   
+}
+.datepicker{
+    border: 1px solid  rgba(34,36,38,.15);
+    box-shadow: none;
+    padding: .78571429em 2.1em .78571429em 1em;
+    color: rgba(0,0,0,.87);
+    min-width: 14em;
+    min-height: 2.71428571em;
+    white-space: normal;
+    border-radius: .28571429rem;
+    cursor: pointer;
+    width: 196px;
+}
+
+.select{
+    width: 196px;
+    min-width: 14em;
+    min-height: 2.71428571em;
+    color: rgba(0,0,0,.87);
+}

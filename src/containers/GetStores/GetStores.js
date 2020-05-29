@@ -11,15 +11,20 @@ class GetStores extends Component{
         let data = [];
         data['owner_id'] = 1;
         this.props.fetchStores(this.props.token,data);
+        this.props.fetchSlots(this.props.token);
     }
 
     render(){
         let stores = [];
+        let slots = [];
         this.props.stores.forEach(store => {
             stores.push(store);
         });
-
-        let html = <CardGroup key='stores' stores={stores} />;
+        this.props.slots.forEach(slot => {
+            slots.push(slot);
+        });
+       
+        let html = <CardGroup key='stores' stores={stores} slots={slots} />;
         if(this.props.loading){
             html = <Loader />
         }
@@ -38,13 +43,15 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         stores: state.store.stores,
-        loading: state.store.loading
+        loading: state.store.loading,
+        slots: state.slot.slots
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchStores: (token, params) => dispatch(actions.fetchStores(token, params))
+        fetchStores: (token, params) => dispatch(actions.fetchStores(token, params)),
+        fetchSlots: (token) => dispatch(actions.fetchSlots(token))
     };
 };
 
