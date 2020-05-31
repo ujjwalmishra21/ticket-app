@@ -1,6 +1,40 @@
 import axios from '../../axios-order';
 import * as actionTypes from './actionTypes';
 
+export const signUpStart = () => {
+    return {
+        type: actionTypes.SIGNUP_START
+    };
+};
+
+export const signUpSuccess = () => {
+    return {
+        type: actionTypes.SIGNUP_SUCCESS
+    };
+};
+
+export const signUpFail = (error) => {
+    return {
+        type: actionTypes.SIGNUP_FAIL,
+        error: error
+    };
+};
+
+export const signUp = (data) => {
+    return dispatch => {
+        dispatch(signUpStart());
+
+        axios.post('/signup', data)
+            .then(response => {
+                if(response.data.status === 'success')
+                    dispatch(signUpSuccess());
+                else    
+                    dispatch(signUpFail(response.data.message));
+            }).catch(err => {
+                dispatch(signUpFail(err.message));
+            });
+    };
+};
 
 export const authInitStart = () => {
     return {

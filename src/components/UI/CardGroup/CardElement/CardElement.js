@@ -153,9 +153,7 @@ class CardElement extends Component{
 
 const mapStateToProps = state => {
     return {
-        loading: state.booking.loading,
-        message: state.booking.message,
-        error: state.booking.error,
+         
         userData: state.auth.data,
         token: state.auth.token
     };

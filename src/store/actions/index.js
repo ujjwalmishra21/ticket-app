@@ -3,6 +3,7 @@ export {
 } from './store';
 
 export {
+    signUp,
     authInit,
     auth, 
     logout,

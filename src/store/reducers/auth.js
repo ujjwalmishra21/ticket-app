@@ -10,6 +10,18 @@ const initialState = {
     authRedirectPath: '/'
 };
 
+const signUpStart = (state, action) => {
+    return updatedObject(state, { error: null, loading: true });
+};
+
+const signUpSuccess = (state, action) => {
+    return updatedObject(state, { loading: false});
+};
+
+const signUpFail = (state, action) => {
+    return updatedObject(state,  { error: action.error, loading: false });
+}
+
 const authInitStart = (state, action) => {
     return updatedObject(state, { error: null, loading: true});
 };
@@ -53,6 +65,12 @@ const setAuthRedirectPath = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
+        case actionTypes.SIGNUP_START:
+            return signUpStart(state, action);
+        case actionTypes.SIGNUP_SUCCESS:
+            return signUpSuccess(state, action);
+        case actionTypes.SIGNUP_FAIL:
+            return signUpFail(state, action);
         case actionTypes.AUTH_INIT_START:
             return authInitStart(state, action);
         case actionTypes.AUTH_INIT_SUCCESS:

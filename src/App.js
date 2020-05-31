@@ -33,6 +33,12 @@ const asyncGetHome = asyncComponent(() => {
   return import ('./containers/Home/Home');
 })
 
+const asyncLogout = asyncComponent(() => {
+  return import ('./containers/Logout/Logout');
+})
+
+
+
 class App extends Component {
 
   componentDidMount() {
@@ -77,8 +83,9 @@ class App extends Component {
             
             <Route path="/addStore" component={asyncAddStore} />
             <Route path="/getStore" component={asyncGetStores} />
+            <Route path="/logout" component={asyncLogout} />
             <Route path="/" exact component={asyncGetHome}/>
-             
+            
             <Redirect to="/"/>
           </Switch>
         );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Aux from '../../../hoc/Aux/Aux';
 import { Card } from 'semantic-ui-react';
-
+import Loader from '../Loader/Loader';
 import CardElement from './CardElement/CardElement';
 const CardGroup = props => {
     let stores = [];
@@ -48,6 +48,18 @@ const CardGroup = props => {
             }
         </Card.Group>
     )
+
+    if(props.loadingBooking){
+        stores_html = <Loader/>
+    }
+    if(props.message){
+        alert(props.message);
+    }
+    if(props.error){
+        alert(props.error);
+    }
+
+
     return (
         <Aux>
         {stores_html}
@@ -71,5 +83,13 @@ const CardGroup = props => {
 //     "owner_id": 1
 //   }
 
+const mapStateToProps = state => {
+    return {
+        loadingBooking: state.booking.loading,
+        message: state.booking.message,
+        error: state.booking.error
+    };
+};
 
-export default CardGroup;
+
+export default connect(mapStateToProps)(CardGroup);

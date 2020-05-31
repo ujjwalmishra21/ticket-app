@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import { Form, Button } from 'semantic-ui-react';
+
 import Aux from '../../hoc/Aux/Aux';
 import Input  from '../../components/UI/Input/Input';
 import Image from '../../components/UI/ImageComponent/ImageComponent';
-import { Form, Button } from 'semantic-ui-react';
-import { updatedObject, checkValidity } from '../../utility/utility';
+import Loader from '../../components/UI/Loader/Loader';
 
+import { updatedObject, checkValidity } from '../../utility/utility';
+import * as actions from '../../store/actions/index';
 
 class Signup extends Component {
     state={
@@ -36,7 +41,7 @@ class Signup extends Component {
                 valid: false,
                 touched: false
             },
-            mobile:{
+            mobile_number:{
                 elementType: 'input',
                 elementConfig:{
                     type: 'text',
@@ -53,10 +58,20 @@ class Signup extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        completed: false
     }
     submitHandler = (event) => {
         event.preventDefault();
+        let data = {};
+        for(let field in this.state.signUpForm){
+            data[field] = this.state.signUpForm[field].value;
+        }
+        this.props.onSignUp(data);
+        if(!this.props.error)
+            this.setState({ completed: true });
+        
+
     }
     changeHandler = (event, inputIdentifier) => {
 
@@ -90,7 +105,7 @@ class Signup extends Component {
         }
         
         let form = (
-            <Form onSubmit={this.submitHandler}>
+            <Form>
                 { formElementAr.map(formEle => {
                     return (
                         <Input
@@ -107,7 +122,8 @@ class Signup extends Component {
                         />
                         
                     );
-                })}    
+                })}
+                <Button onClick={this.submitHandler} content='Submit' />
             </Form>
         );
 
@@ -116,15 +132,41 @@ class Signup extends Component {
             margin: '30px',
             backgroundColor: 'white'
         };
-
+        let error = null;
+        if(this.props.error){
+            error = <p style={{color:'red'}}>{this.props.error}</p>
+        }
+        if(this.props.loading){
+            form = <Loader />
+        }
+        if(this.state.completed){
+            alert('User successfully registered. Please Login to continue');
+            form = <Redirect to="/login" />
+        }
 
         return(
            <Aux>
                 <Image src='https://img.icons8.com/officel/80/000000/booking.png' size='small' circular={true} bordered={true} class={imageClass} />
                 {form}
+                {error}
            </Aux>
         );
     }
 }
 
-export default Signup;
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSignUp: (data) => dispatch(actions.signUp(data))
+    };
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

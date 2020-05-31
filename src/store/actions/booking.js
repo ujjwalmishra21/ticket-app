@@ -29,10 +29,11 @@ export const createBooking = (token, data) => {
 
         axios.post('/createBooking', data, config)
             .then(response => {
+               
                 if(response.data.status === 'success')
-                    dispatch(createBookingSuccess(response.message));
+                    dispatch(createBookingSuccess(response.data.message));
                 else
-                    dispatch(createBookingFail(response.message));
+                    dispatch(createBookingFail(response.data.message));
             }).catch(err => {
                 dispatch(createBookingFail(err.message));
             });
