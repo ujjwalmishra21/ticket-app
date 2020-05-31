@@ -27,14 +27,14 @@ class CardElement extends Component{
     };
 
     onDateChange = (date) => {
-        console.log(date)
+       
         this.setState({
             booking_date: date
         });
     }
 
     handleChange = (type, value) => {
-        console.log(type);
+       
         this.setState({
             [type]: value
         })

@@ -1,5 +1,6 @@
 export {
-    fetchStores
+    fetchStores,
+    addStore
 } from './store';
 
 export {

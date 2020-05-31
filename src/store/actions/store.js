@@ -1,6 +1,48 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-order';
 
+export const addStoreSuccess = (response) => {
+    return {
+        type: actionTypes.ADD_STORE_SUCCESS,
+        response: response
+    };
+};
+
+export const addStoreFail = (error) => {
+    return {
+        type: actionTypes.ADD_STORE_FAIL,
+        error: error
+    };
+};
+
+export const addStoreStart = () => {
+    return {
+        type: actionTypes.ADD_STORE_START
+    };
+};
+
+export const addStore = (token, data) => {
+    return dispatch => {
+        dispatch(addStoreStart());
+       console.log(token + "---" + JSON.stringify(data));
+        const config = {headers:{'x-auth': token}};
+        
+        axios.post('/addStore', data, config)
+            .then(response => {
+
+                if(response.data.status === 'success'){
+                    dispatch(addStoreSuccess(response.data));
+                }else{
+                    dispatch(addStoreFail(response.data.message));
+                }
+                
+            }).catch((err)=>{
+               
+                dispatch(addStoreFail(err.message));
+            });
+        
+    };
+};
 
 export const fetchStoresSuccess = (stores) => {
     return {
@@ -55,7 +97,7 @@ export const fetchStores = (token, params) => {
             });
         
 
-    }
-}
+    };
+};
 
 

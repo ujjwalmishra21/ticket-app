@@ -5,7 +5,7 @@ const input = (props) => {
     let inputElement = null;
     let validError = null;
     if(props.invalid && props.shouldValidate && props.touched){
-        validError = <p>Please enter a valid valud</p>
+        validError = <p>Please enter a valid value</p>
     }
 
     switch(props.elementType){
