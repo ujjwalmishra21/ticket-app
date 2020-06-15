@@ -15,7 +15,7 @@ const CardGroup = props => {
     });
     
     var stores_html = (
-        <Card.Group style={{justifyContent:'center'}}>    
+        <Card.Group style={{justifyContent:'center', width: '100%'}}>    
             {
                 stores.map(store => {
                     let landmark = store.landmark ? store.landmark : '';

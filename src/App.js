@@ -70,11 +70,11 @@ class App extends Component {
        </Switch>
     );
     if(this.props.isAuthenticated){
-      console.log("HERE AUTH")
+     
       let type = localStorage.getItem(this.props.userData.type);
       console.log(this.props.userData.type);
       // if(parseInt(type) === 1){
-        console.log("HERE type 1");
+     
         navList = [
           {name:'Home', path:'/'},
           {name:'Add Store', path:'/addStore'},

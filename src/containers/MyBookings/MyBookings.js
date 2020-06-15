@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Loader from '../../components/UI/Loader/Loader';
-import CardGroupUpdate from '../../components/UI/CardGroupUpdate/CardGroupUpdate';
+import CardGroupOwner from '../../components/UI/CardGroupOwner/CardGroupOwner';
+import CardGroupCustomer from '../../components/UI/CardGroupCustomer/CardGroupCustomer';
 import {connect} from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
 
@@ -15,21 +16,32 @@ class MyBookings extends Component {
 
     render(){
         let bookings = [];
-        
-        if(this.props.bookings){
+        let html_alt = '';
+        if(this.props.bookings && this.props.bookings.length > 0){
             this.props.bookings.forEach(booking =>{
                 bookings.push(booking);
             });
-            
+        }else{
+            html_alt = <h2>No bookings found</h2>
         }
         let heading = <h1>My Bookings</h1>;
         if(parseInt(this.props.data.user_id) === 1){
             heading = <h1>Store Bookings</h1>
         }
+        let html = ''
+        if(bookings.length > 0){
+            if(parseInt(this.props.data.user_id) === 1)
+                html = <CardGroupOwner bookings={bookings} />
+            else
+                html = <CardGroupCustomer bookings={bookings} />
+        }else{
+            html = html_alt
+        }
+
         return (
             <Aux>
                 {heading}
-                <CardGroupUpdate bookings={bookings} />
+                {html}
             </Aux>
         );
     };

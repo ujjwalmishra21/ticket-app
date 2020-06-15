@@ -5,10 +5,10 @@ import {connect} from 'react-redux';
 import {Card} from 'semantic-ui-react';
 import Loader from '../Loader/Loader';
 
-const CardGroupUpdate = (props) => {
+const CardGroupOwner = (props) => {
     let bookings = [];
     
-    if(props.bookings.length > 0){
+    if(props.bookings && props.bookings.length > 0){
         props.bookings.forEach(booking => {
             booking.bookings.forEach(details => {
                 bookings.push({
@@ -35,7 +35,7 @@ const CardGroupUpdate = (props) => {
     }
   
     var bookings_html = (
-        <Card.Group style={{justifyContent: 'center'}}>
+        <Card.Group style={{justifyContent: 'center',width: '100%'}}>
             {
                 bookings.length > 0 && bookings.map(booking => {
                     return(
@@ -84,4 +84,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(CardGroupUpdate);
+export default connect(mapStateToProps)(CardGroupOwner);
