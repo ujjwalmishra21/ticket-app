@@ -29,6 +29,10 @@ const asyncGetStores = asyncComponent(() => {
   return import ('./containers/GetStores/GetStores');
 })
 
+const asyncMyBookings = asyncComponent(() => {
+  return import ('./containers/MyBookings/MyBookings');
+})
+
 const asyncGetHome = asyncComponent(() => {
   return import ('./containers/Home/Home');
 })
@@ -74,7 +78,8 @@ class App extends Component {
         navList = [
           {name:'Home', path:'/'},
           {name:'Add Store', path:'/addStore'},
-          {name: 'Get Store', path:'/getStore'},
+          {name:'Get Store', path:'/getStore'},
+          {name:'My Bookings', path:'/myBookings'},
           {name: 'Logout', path:'/logout'},
         ];
 
@@ -83,6 +88,7 @@ class App extends Component {
             
             <Route path="/addStore" component={asyncAddStore} />
             <Route path="/getStore" component={asyncGetStores} />
+            <Route path="/myBookings" component={asyncMyBookings} />
             <Route path="/logout" component={asyncLogout} />
             <Route path="/" exact component={asyncGetHome}/>
             

@@ -9,7 +9,17 @@ class GetStores extends Component{
     
     componentDidMount() {
         let data = [];
-        data['owner_id'] = 1;
+        let user_data = JSON.parse(localStorage.getItem('data'));
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+          });
+        if(parseInt(user_data.type) === 1){
+            data['owner_id'] = user_data.user_id;
+        }else if(parseInt(user_data.type) === 1){ 
+            data['customer_id'] = user_data.user_id;
+        }
+       
         this.props.fetchStores(this.props.token,data);
         this.props.fetchSlots(this.props.token);
     }

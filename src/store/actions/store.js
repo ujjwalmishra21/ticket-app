@@ -67,6 +67,7 @@ export const fetchStoresStart = () => {
 export const fetchStores = (token, params) => {
     return async (dispatch) => {
         dispatch(fetchStoresStart());
+        console.log('------' + params);
         let queryParams = '';
         if(params['owner_id'])
             queryParams = `?owner_id=${params['owner_id']}`;

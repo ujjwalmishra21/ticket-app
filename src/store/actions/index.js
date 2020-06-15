@@ -17,5 +17,6 @@ export {
 } from  './slot';
 
 export {
-    createBooking
+    createBooking,
+    fetchBooking
 } from './booking';
