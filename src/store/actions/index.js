@@ -20,3 +20,7 @@ export {
     createBooking,
     fetchBooking
 } from './booking';
+
+export {
+    fetchLocation
+} from './location';

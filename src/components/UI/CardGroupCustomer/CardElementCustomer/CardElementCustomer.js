@@ -4,7 +4,7 @@ import {Card, CardContent} from 'semantic-ui-react';
 const CardElementNew = props => {
     let date = '';
     let open_time = '', close_time = '';
-    console.log("PROPS" + JSON.stringify(props))
+    
     if(props.store_details && props.store_details.open_time){
         let open_time_s = props.store_details.open_time.split(':');
         open_time = open_time_s[0] + ':' + open_time_s[1];

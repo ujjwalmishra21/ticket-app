@@ -50,7 +50,6 @@ class CardElement extends Component{
             store_id: this.props.store_id
         };
 
-        console.log(data);
         this.props.createBooking(this.props.token, data);
         this.resetModal();
         this.onCloseModal();

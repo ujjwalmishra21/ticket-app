@@ -139,11 +139,11 @@ class AddStore extends Component{
         this.props.onfetchSlots(this.props.token);
     }
     handleChange = (type, value) =>{
-        console.log(type)
+        
         this.setState({ 
             [type]: value
         });
-        console.log(this.state);
+        
     };
     onSubmit = (event) => {
         event.preventDefault();
@@ -156,7 +156,7 @@ class AddStore extends Component{
         data['owner_id'] = this.props.userData.user_id;
         data['open_time'] = this.state.open_time.value;
         data['close_time'] = this.state.close_time.value;
-        console.log(data);
+       
         this.props.onAddStore(this.props.token, data);
        
     };

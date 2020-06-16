@@ -10,16 +10,13 @@ class GetStores extends Component{
     componentDidMount() {
         let data = [];
         let user_data = JSON.parse(localStorage.getItem('data'));
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-          });
+     
         if(parseInt(user_data.type) === 1){
             data['owner_id'] = user_data.user_id;
-        }else if(parseInt(user_data.type) === 1){ 
-            data['customer_id'] = user_data.user_id;
+        }else if(parseInt(user_data.type) === 2){ 
+            data['city'] = this.props.locationData.City;
         }
-       
+        
         this.props.fetchStores(this.props.token,data);
         this.props.fetchSlots(this.props.token);
     }
@@ -27,6 +24,7 @@ class GetStores extends Component{
     render(){
         let stores = [];
         let slots = [];
+       
         this.props.stores.forEach(store => {
             stores.push(store);
         });
@@ -35,7 +33,7 @@ class GetStores extends Component{
         });
        
         let html = <CardGroup key='stores' stores={stores} slots={slots} />;
-        if(this.props.loading){
+        if(this.props.loading || this.props.locationLoad){
             html = <Loader />
         }
         return (
@@ -54,7 +52,9 @@ const mapStateToProps = state => {
         token: state.auth.token,
         stores: state.store.stores,
         loading: state.store.loading,
-        slots: state.slot.slots
+        slots: state.slot.slots,
+        locationLoad: state.location.loading,
+        locationData: state.location.location_data
     };
 };
 

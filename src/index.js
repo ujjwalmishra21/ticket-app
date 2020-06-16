@@ -16,6 +16,7 @@ import storeReducer from './store/reducers/store';
 import authReducer from './store/reducers/auth';
 import slotReducer from './store/reducers/slot';
 import bookingReducer from './store/reducers/booking';
+import locationReducer from './store/reducers/location';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -23,7 +24,8 @@ const rootReducers = combineReducers({
   store: storeReducer,
   auth: authReducer,
   slot: slotReducer,
-  booking: bookingReducer
+  booking: bookingReducer,
+  location: locationReducer
 });
 
 const store = createStore(rootReducers, composeEnhancers(
