@@ -70,11 +70,11 @@ class App extends Component {
        </Switch>
     );
     if(this.props.isAuthenticated){
-     
-      let type = localStorage.getItem(this.props.userData.type);
-      console.log(this.props.userData.type);
-      // if(parseInt(type) === 1){
-     
+      
+      let addStore = null;
+
+      if(parseInt(this.props.userData.type) === 1){
+        
         navList = [
           {name:'Home', path:'/'},
           {name:'Add Store', path:'/addStore'},
@@ -82,32 +82,28 @@ class App extends Component {
           {name:'My Bookings', path:'/myBookings'},
           {name: 'Logout', path:'/logout'},
         ];
-
-        route = (
-          <Switch>
-            
-            <Route path="/addStore" component={asyncAddStore} />
+        addStore = <Route path="/addStore" component={asyncAddStore} /> ;
+        
+      }else{
+        navList = [
+          {name:'Home', path:'/'},
+          {name:'Get Store', path:'/getStore'},
+          {name:'My Bookings', path:'/myBookings'},
+          {name: 'Logout', path:'/logout'},
+        ];
+      }
+      
+      route = (
+        <Switch>
+            {addStore}
             <Route path="/getStore" component={asyncGetStores} />
             <Route path="/myBookings" component={asyncMyBookings} />
             <Route path="/logout" component={asyncLogout} />
             <Route path="/" exact component={asyncGetHome}/>
-            
             <Redirect to="/"/>
           </Switch>
-        );
-      // }else if(parseInt(type) === 2){
-      //   console.log("HERE type 2");
-      //   navList = ['Home', 'Get Store']
-      //   route = (
-      //     <Switch>
-            
-      //       <Route path="/getStore" component={asyncGetStores} />
-      //       <Route path="/" exact component={asyncGetHome} />
-      //       <Redirect to="/"/>
-      //     </Switch>
-      //   );
-      // }
-      // console.log(route);
+      );
+     
     
       
     }
