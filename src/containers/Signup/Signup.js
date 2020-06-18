@@ -18,12 +18,12 @@ class Signup extends Component {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: 1, text: 'Customer'},
-                        {value: 2, text: 'Owner'}
+                        {value: 1, text: 'Owner'},
+                        {value: 2, text: 'Customer'}
                     ]
                 },
                 inputMode: 'none',
-                value: 1,
+                value: 2,
                 validation: {},
                 valid: true
             },
