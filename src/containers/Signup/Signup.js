@@ -2,31 +2,22 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
-
+import './Signup.css';
 import Aux from '../../hoc/Aux/Aux';
 import Input  from '../../components/UI/Input/Input';
 import Image from '../../components/UI/ImageComponent/ImageComponent';
 import Loader from '../../components/UI/Loader/Loader';
-
+import Select from 'react-select';
 import { updatedObject, checkValidity } from '../../utility/utility';
 import * as actions from '../../store/actions/index';
-
+const user_types = [
+    {value:'2', label:'Customer'},
+    {value:'1', label:'Owner'}
+];
 class Signup extends Component {
     state={
         signUpForm:{
-            type:{
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 1, text: 'Owner'},
-                        {value: 2, text: 'Customer'}
-                    ]
-                },
-                inputMode: 'none',
-                value: 2,
-                validation: {},
-                valid: true
-            },
+        
             name:{
                 elementType: 'input',
                 elementConfig:{
@@ -59,7 +50,11 @@ class Signup extends Component {
                 touched: false
             }
         },
-        completed: false
+        completed: false,
+        type: {
+            value: '2',
+            label: 'Customer'
+        }
     }
     submitHandler = (event) => {
         event.preventDefault();
@@ -67,12 +62,22 @@ class Signup extends Component {
         for(let field in this.state.signUpForm){
             data[field] = this.state.signUpForm[field].value;
         }
+      
+        data['type'] = this.state.type.value;
+
         this.props.onSignUp(data);
         if(!this.props.error)
             this.setState({ completed: true });
         
 
     }
+    handleChange = (type, value) =>{
+        
+        this.setState({ 
+            [type]: value
+        });
+        
+    };
     changeHandler = (event, inputIdentifier) => {
 
         const updatedFormElement = updatedObject( this.state.signUpForm[inputIdentifier],{
@@ -80,7 +85,7 @@ class Signup extends Component {
             valid: checkValidity(event.target.value,  this.state.signUpForm[inputIdentifier].validation),
             touched: true
         });
-
+        
         const updatedForm = updatedObject(this.state.signUpForm, {
             [inputIdentifier]: updatedFormElement
         });
@@ -106,6 +111,14 @@ class Signup extends Component {
         
         let form = (
             <Form>
+                <Select 
+                    className="select"
+                    value={this.state.type}
+                    onChange={(value) => this.handleChange('type', value)}
+                    placeholder="Select user type"
+                    options={user_types}
+
+                />
                 { formElementAr.map(formEle => {
                     return (
                         <Input
