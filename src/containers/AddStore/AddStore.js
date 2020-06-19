@@ -230,7 +230,7 @@ class AddStore extends Component{
                     onChange={(value) => this.handleChange('open_time', value)}
                     placeholder='Opening Time'
                     options={time_options}
-                    inputProps={{readOnly:true}}
+                    isSearchable={false}
                     />
                 <Select
                     className='select'
@@ -238,7 +238,7 @@ class AddStore extends Component{
                     onChange={(value) => this.handleChange('close_time',  value)}
                     placeholder='Closing Time'
                     options={time_options}
-                    inputProps={{readOnly:true}}
+                    isSearchable={false}
                     /> 
 
                 <Button 

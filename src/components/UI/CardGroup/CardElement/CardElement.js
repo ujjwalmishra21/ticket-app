@@ -117,7 +117,8 @@ class CardElement extends Component{
                                         selected={this.state.booking_date} 
                                         placeholderText="Select a date" 
                                         onChange={this.onDateChange}
-                                        isSearchable={ false } />
+                                        onKeyDown={e => e.preventDefault()}
+                                    />
                                 </div>
                                 <Select 
                                     className='select'
@@ -125,7 +126,7 @@ class CardElement extends Component{
                                     onChange={(value) => this.handleChange('slot_id', value)}
                                     placeholder="Select a time slot" 
                                     options={options}
-                                    inputProps={{readOnly:true}} />
+                                    isSearchable={false} />
                             </Modal.Content>
                             <Modal.Actions>
                                 <Button 

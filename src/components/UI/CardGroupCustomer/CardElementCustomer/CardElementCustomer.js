@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, CardContent} from 'semantic-ui-react';
+import './CardElementCustomer.css';
 
 const CardElementNew = props => {
     let date = '';
@@ -30,25 +31,35 @@ const CardElementNew = props => {
     }
     let store_address = '';
     if(props.store_details && props.store_details.locality && props.store_details.street && props.store_details.city){
-        store_address = props.store_details.locality + ',' + props.store_details.street + ',' + props.store_details.city;
+        store_address = props.store_details.locality + ', ' + props.store_details.street + ', ' + props.store_details.city;
     }
     return (
-        <Card>
-            <Card.Content>
+        <Card className='booking-store-card'>
+            <Card.Content className='bookings-top-section'>
                 <Card.Header>{store_name}</Card.Header>
                 <Card.Meta>
-                    Slot Date: {date}
-                </Card.Meta>
-                <Card.Meta>
-                    Slot Time: {slot_description}
+                    <div className='store-detail-section'>
+                        <div>
+                            Store Hours: {open_time} - {close_time}
+                        </div>
+                    </div>
                 </Card.Meta>
                 <Card.Description>
-                    Store Hours: {open_time} - {close_time}
+                    <div className='slot-section'>
+                        Slot Date: {date}
+                    </div>
+                    <div className='slot-section'>
+                        Slot Time: {slot_description}
+                    </div>
+                    
                 </Card.Description>
+              
             </Card.Content>
             <CardContent extra>
                 <Card.Description>
-                    {store_address}
+                    <div className='address-section'>   
+                        {store_address}
+                    </div>
                 </Card.Description>
             </CardContent>
         </Card>

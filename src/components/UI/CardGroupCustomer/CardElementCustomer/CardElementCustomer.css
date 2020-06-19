@@ -1,0 +1,25 @@
+.booking-store-card{
+    background-color: #aac1c173 !important; 
+}
+.store-detail-section{
+    display: flex;
+    font-size: 15px;
+}
+.store-detail-section-left{
+    float: left;
+    width: 50%;
+    word-wrap: break-word;
+}
+.slot-section{
+    float: left;
+    font-size: 15px !important;
+}
+.bookings-top-section{
+    border-bottom: 1px dashed black !important;
+}
+.address-section{
+    
+    font-size: 15px !important;
+    margin-top: -11px;
+    margin-bottom: -11px;
+}
