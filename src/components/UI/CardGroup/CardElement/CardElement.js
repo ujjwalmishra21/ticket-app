@@ -116,7 +116,8 @@ class CardElement extends Component{
                                         className='datepicker' 
                                         selected={this.state.booking_date} 
                                         placeholderText="Select a date" 
-                                        onChange={this.onDateChange} />
+                                        onChange={this.onDateChange}
+                                        isSearchable={ false } />
                                 </div>
                                 <Select 
                                     className='select'
