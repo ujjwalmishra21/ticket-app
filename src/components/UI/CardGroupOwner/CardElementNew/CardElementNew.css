@@ -4,12 +4,12 @@
 }
 .store-section-left{
     float: left;
-    width: 35%;
+    width: 101px;
     word-wrap: break-word;
 }
 .store-section-right{
     float: right;
-    width: 60%;
+    width: 50%;
     word-wrap: break-word;
 }
 .slot-section{
