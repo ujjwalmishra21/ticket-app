@@ -123,7 +123,8 @@ class CardElement extends Component{
                                     value={this.state.slot_id}
                                     onChange={(value) => this.handleChange('slot_id', value)}
                                     placeholder="Select a time slot" 
-                                    options={options} />
+                                    options={options}
+                                    inputProps={{readOnly:true}} />
                             </Modal.Content>
                             <Modal.Actions>
                                 <Button 
