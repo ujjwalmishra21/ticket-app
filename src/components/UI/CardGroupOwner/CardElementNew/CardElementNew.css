@@ -4,12 +4,12 @@
 }
 .store-section-left{
     float: left;
-    width: 50%;
+    width: 35%;
     word-wrap: break-word;
 }
 .store-section-right{
     float: right;
-    width: 50%;
+    width: 60%;
     word-wrap: break-word;
 }
 .slot-section{
@@ -27,7 +27,7 @@
 }
 .user-section-left{
     float: left;
-    width: 40%;
+    width: 50%;
     word-wrap: break-word;
 }
 .user-section-right{
