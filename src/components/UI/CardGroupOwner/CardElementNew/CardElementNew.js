@@ -18,7 +18,7 @@ const CardElementNew = props => {
     }
  
     return (
-        <Card>
+        <Card className='bookings-done-card'>
             <Card.Content className="bookings-top-section">
                 <Card.Header className="store-name">{props.store_name}</Card.Header>
                 <Card.Meta>

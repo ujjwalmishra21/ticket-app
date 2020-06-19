@@ -51,7 +51,7 @@ class NavItems extends Component{
                 <Icon name="sidebar" size="big" />
                 </div>
                 <div className="logo-navbar">
-                 <Link to="/"><h2>SPOTBook</h2></Link>
+                 <Link to="/"><h2 style={{color:'#FFFFFF'}}>SPOTBook</h2></Link>
                 </div>
             </div>
          {this.props.children}

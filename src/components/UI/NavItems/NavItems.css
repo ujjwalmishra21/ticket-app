@@ -1,7 +1,9 @@
 .navbar-section{
     width: 100%;
     height: 55px;
-    /* background-color: black; */
+    border: 1.5px solid #000000;
+    background-color: #000000;
+    color: #FFFFFF;
     
 }
 .navbar-button{
@@ -10,7 +12,7 @@
     padding-top: 10px;
     padding-left: 8px;
     padding-right: 8px;
-    border-right: 1px solid #80808091;
+    border-right: 1px solid #000000;
 }
 
 .logo-navbar{
@@ -18,5 +20,5 @@
     
 }
 .logo-navbar a{
-    color: #6a6c6f;
+    color: #000000;
 }

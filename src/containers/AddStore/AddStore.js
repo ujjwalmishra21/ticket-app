@@ -239,7 +239,9 @@ class AddStore extends Component{
                     options={time_options}
                     /> 
 
-                <Button onClick={this.onSubmit}>Add Store</Button>
+                <Button 
+                    style={{backgroundColor:'#747679', color:'#FFFFFF'}}
+                    onClick={this.onSubmit}>Add Store</Button>
             </Form>
         );
         var error = <p style={{color:'red'}}>{this.props.error}</p>

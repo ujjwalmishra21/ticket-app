@@ -113,12 +113,14 @@ class OTP extends Component {
                     disabled={this.props.loading} 
                     loading={this.props.loading} 
                     onClick={this.onSubmit} 
+                    style={{backgroundColor:'#747679', color:'#FFFFFF'}}
                     className="ui button">Submit</Button>
                 <Button 
                     style={{marginLeft: '10px'}} 
                     disabled={this.props.loading} 
                     loading={this.props.loading} 
                     onClick={this.onResendOTP} 
+                    style={{backgroundColor:'#747679', color:'#FFFFFF'}}
                     className="ui button">Resend OTP</Button>
             </Form>
         );

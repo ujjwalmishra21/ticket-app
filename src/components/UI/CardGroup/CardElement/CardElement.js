@@ -90,7 +90,7 @@ class CardElement extends Component{
         });
 
         let html = (
-            <Card>
+            <Card className='store-card'>
             <Card.Content className='content'>
                 <Image
                     floated='right'
@@ -107,7 +107,7 @@ class CardElement extends Component{
                         Time: <Card.Description>{this.props.open_time} - {this.props.close_time}</Card.Description>
                     </div>
                     <div style={{float:'right'}}>
-                         <Modal size='mini' trigger={<Button primary onClick={this.onShowModal}>Book</Button>} open={this.state.showModal} onClose={this.onCloseModal}>
+                         <Modal size='mini' trigger={<Button primary style={{backgroundColor:'#1d394ee6'}} onClick={this.onShowModal}>Book</Button>} open={this.state.showModal} onClose={this.onCloseModal}>
                             <Modal.Header>Pick A Slot</Modal.Header>
                             <Modal.Content>
                                 <div className='datepicker-section'>
@@ -126,13 +126,15 @@ class CardElement extends Component{
                                     options={options} />
                             </Modal.Content>
                             <Modal.Actions>
-                                <Button negative onClick={this.onCloseModal}>Close</Button>
+                                <Button 
+                                    onClick={this.onCloseModal}
+                                    style={{backgroundColor:'#c56b6bbf', color:'#ffffff'}}>Close</Button>
                                 <Button
-                                    positive
                                     icon='checkmark'
                                     labelPosition='right'
                                     content='Confirm'
                                     onClick={this.confirmSlotBook}
+                                    style={{backgroundColor:'#0a3e16', color:'#ffffff'}}
                                 />
                             </Modal.Actions>
                         </Modal>  

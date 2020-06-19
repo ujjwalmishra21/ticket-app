@@ -86,7 +86,7 @@ class Login extends Component{
                     );
                 })
                  }
-                 <Button disabled={this.props.loading} loading={this.props.loading} onClick={this.onSubmit} className="ui button">Login</Button>
+                 <Button disabled={this.props.loading} loading={this.props.loading} onClick={this.onSubmit} className="ui button" style={{backgroundColor:'#747679', color:'#FFFFFF'}}>Login</Button>
             </Form>
         );
         let redirectPath = null;

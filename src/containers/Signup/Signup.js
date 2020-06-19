@@ -136,7 +136,9 @@ class Signup extends Component {
                         
                     );
                 })}
-                <Button onClick={this.submitHandler} content='Submit' />
+                <Button 
+                    style={{backgroundColor:'#747679', color:'#FFFFFF'}}
+                    onClick={this.submitHandler} content='Submit' />
             </Form>
         );
 
