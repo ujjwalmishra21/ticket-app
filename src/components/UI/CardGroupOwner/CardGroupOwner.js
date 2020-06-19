@@ -26,7 +26,11 @@ const CardGroupOwner = (props) => {
                         zip: booking.zip,
                         owner_id: booking.owner_id,
                     },
-                    slot_details: details.slot
+                    slot_details: details.slot,
+                    user_details: {
+                        name: details.user.name,
+                        mobile_number: details.user.mobile_number
+                    }
                 });
             });
         });
@@ -54,6 +58,7 @@ const CardGroupOwner = (props) => {
                             booking_date={booking.booking_details.booking_date}
                             customer_id={booking.booking_details.customer_id}
                             slot_details={booking.slot_details}
+                            user_details={booking.user_details}
                         />
                     );
                 })

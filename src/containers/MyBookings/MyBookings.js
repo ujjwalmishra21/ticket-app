@@ -25,7 +25,7 @@ class MyBookings extends Component {
             html_alt = <h2>No bookings found</h2>
         }
         let heading = <h1>My Bookings</h1>;
-        if(parseInt(this.props.data.user_id) === 1){
+        if(parseInt(this.props.data.type) === 1){
             heading = <h1>Store Bookings</h1>
         }
         let html = ''

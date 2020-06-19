@@ -1,4 +1,5 @@
 import React from 'react';
+import './CardElementNew.css';
 import {Card, CardContent} from 'semantic-ui-react';
 
 const CardElementNew = props => {
@@ -18,21 +19,38 @@ const CardElementNew = props => {
  
     return (
         <Card>
-            <Card.Content>
-                <Card.Header>{props.store_name}</Card.Header>
+            <Card.Content className="bookings-top-section">
+                <Card.Header className="store-name">{props.store_name}</Card.Header>
                 <Card.Meta>
-                    Slot Date: {date}
+                    <div className="store-section">
+                        <div className="store-section-left">
+                             Store Hours: {open_time} - {close_time}
+                        </div>
+                        <div className="store-section-right">
+                            {props.street}, {props.locality}
+                        </div>
+                    </div>
                 </Card.Meta>
-                <Card.Meta>
-                    Slot Time: {props.slot_details.description}
-                </Card.Meta>
-                <Card.Description>
-                    Store Hours: {open_time} - {close_time}
+               
+                <Card.Description >
+                    <div className="slot-section">
+                        Slot Date: {date}
+                    </div>
+                    <div className="slot-section">
+                        Slot Time: {props.slot_details.description}
+                    </div>
                 </Card.Description>
             </Card.Content>
             <CardContent extra>
                 <Card.Description>
-                    {props.locality}, {props.street}, {props.city}
+                    <div className="user-section">
+                        <div className="user-section-left">
+                            Name: {props.user_details.name}
+                        </div>
+                        <div className="user-section-right">
+                            Contact: {props.user_details.mobile_number}
+                        </div>
+                    </div>
                 </Card.Description>
             </CardContent>
         </Card>

@@ -1,0 +1,40 @@
+.store-section{
+    display: flex;
+    font-size: 15px;
+}
+.store-section-left{
+    float: left;
+    width: 50%;
+    word-wrap: break-word;
+}
+.store-section-right{
+    float: right;
+    width: 50%;
+    word-wrap: break-word;
+}
+.slot-section{
+    float: left;
+    font-size: 15px !important;
+}
+.bookings-top-section{
+    border-bottom: 1px dashed black !important;
+}
+.user-section{
+    display: flex;
+    font-size: 15px !important;
+    margin-top: -11px;
+    margin-bottom: -11px;
+}
+.user-section-left{
+    float: left;
+    width: 50%;
+    word-wrap: break-word;
+}
+.user-section-right{
+    float: right;
+    width: 50%;
+    word-wrap: break-word;
+}
+.store-name{
+    font-size: 20px !important;
+}
