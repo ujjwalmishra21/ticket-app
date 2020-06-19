@@ -117,7 +117,7 @@ class CardElement extends Component{
                                         selected={this.state.booking_date} 
                                         placeholderText="Select a date" 
                                         onChange={this.onDateChange}
-                                        onKeyDown={e => e.preventDefault()}
+                                        isSearchable={false}
                                     />
                                 </div>
                                 <Select 
