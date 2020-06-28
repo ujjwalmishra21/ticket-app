@@ -13,12 +13,16 @@ export {
 } from './auth';
 
 export {
-    fetchSlots
+    fetchSlots,
+    fetchSlotAvailability
 } from  './slot';
 
 export {
     createBooking,
-    fetchBooking
+    fetchBooking,
+    resetBookingProps,
+    fetchQRCode,
+    completeBookingVerification
 } from './booking';
 
 export {

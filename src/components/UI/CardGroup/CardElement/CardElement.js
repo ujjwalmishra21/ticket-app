@@ -16,9 +16,27 @@ class CardElement extends Component{
         showModal:false,
         data: null,
         booking_date: null,
-        slot_id: null
+        slot_id: null,
+        slot_available_data: null,
+        slot_count: null,
+        store_slot_map: null
     };
-    
+   
+    componentDidUpdate(prevProps, prevState, snapshot){
+        if(prevProps.slotAvailableData !== this.props.slotAvailableData){
+            let slot_details = {};
+            
+            if(this.props.slotAvailableData && this.props.slotAvailableData.length > 0){
+                this.props.slotAvailableData.forEach(slot_inf => {
+                    if(slot_inf.slot_id && slot_inf.slot_count)
+                        slot_details[slot_inf.slot_id] =  slot_inf.slot_count;
+                });
+                
+            }
+            this.setState({store_slot_map: slot_details});
+           
+        }
+    }
     onShowModal = () => {
         this.setState({showModal: true });
     };
@@ -31,29 +49,42 @@ class CardElement extends Component{
         this.setState({
             booking_date: date
         });
+      
+        let data = {
+            booking_date:date,
+            store_id: this.props.store_id                
+        };
+        this.props.fetchSlotAvailability(this.props.token, data);
     }
 
     handleChange = (type, value) => {
        
         this.setState({
             [type]: value
-        })
+        });
+       
     }
     
-
     confirmSlotBook = (event) => {
         event.preventDefault();
         let data = {
             booking_date: this.state.booking_date,
             slot_id: this.state.slot_id.value,
             customer_id: this.props.userData.user_id,
-            store_id: this.props.store_id
+            store_id: this.props.store_id,
+            max_slot_count: this.props.max_slot_count
         };
-
-        this.props.createBooking(this.props.token, data);
-        this.resetModal();
-        this.onCloseModal();
+      
+        if(this.state.store_slot_map[this.state.slot_id.value] === undefined || (this.props.max_slot_count - this.state.store_slot_map[this.state.slot_id.value] > 0)){
+        
+            this.props.createBooking(this.props.token, data);
+            this.resetModal();
+            this.onCloseModal();
+        }else{
+            alert('Please try another slot. This slot is full.');
+        }
     }
+
     resetModal = () => {
         this.setState({
             booking_date: null,
@@ -88,7 +119,7 @@ class CardElement extends Component{
                 });
             }
         });
-
+       
         let html = (
             <Card className='store-card'>
             <Card.Content className='content'>
@@ -151,21 +182,22 @@ class CardElement extends Component{
                 {html}
                 
             </Aux>
-        )
+        );
     }    
 }
 
 const mapStateToProps = state => {
-    return {
-         
+    return {         
         userData: state.auth.data,
-        token: state.auth.token
+        token: state.auth.token,
+        slotAvailableData: state.slot.slot_available_data
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        createBooking: (token, data) => dispatch(actions.createBooking(token, data))
+        createBooking: (token, data) => dispatch(actions.createBooking(token, data)),
+        fetchSlotAvailability: (token, data) => dispatch(actions.fetchSlotAvailability(token, data))
     };
 };
 

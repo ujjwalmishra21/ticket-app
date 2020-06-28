@@ -24,7 +24,7 @@ export const addStoreStart = () => {
 export const addStore = (token, data) => {
     return dispatch => {
         dispatch(addStoreStart());
-       console.log(token + "---" + JSON.stringify(data));
+       
         const config = {headers:{'x-auth': token}};
         
         axios.post('/addStore', data, config)
@@ -67,7 +67,7 @@ export const fetchStoresStart = () => {
 export const fetchStores = (token, params) => {
     return async (dispatch) => {
         dispatch(fetchStoresStart());
-        console.log('------' + params);
+       
         let queryParams = '';
         if(params['owner_id'])
             queryParams = `?owner_id=${params['owner_id']}`;
@@ -93,7 +93,7 @@ export const fetchStores = (token, params) => {
                 }
                 
             }).catch((err)=>{
-                console.log(err);
+             
                 dispatch(fetchStoresFail(err.message));
             });
         

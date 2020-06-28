@@ -4,6 +4,8 @@ import Aux from '../../../hoc/Aux/Aux';
 import { Card } from 'semantic-ui-react';
 import Loader from '../Loader/Loader';
 import CardElement from './CardElement/CardElement';
+
+
 const CardGroup = props => {
     let stores = [];
     let slots = [];
@@ -25,6 +27,7 @@ const CardGroup = props => {
                     let  close_time = store.close_time.split(':');
                     close_time = close_time[0] + ':' + close_time[1];
                     return (
+                   
                     <CardElement 
                         key={store.id}
                         src={store.src}
@@ -41,8 +44,10 @@ const CardGroup = props => {
                         owner_id={store.owner_id}
                         open_time={open_time}
                         close_time={close_time}
+                        max_slot_count={store.max_slot_count}
                         slots={slots}
                     />
+                   
                     );
                 })  
             }

@@ -4,6 +4,7 @@ import Aux from '../../hoc/Aux/Aux';
 import CardGroup from '../../components/UI/CardGroup/CardGroup';
 import Loader from '../../components/UI/Loader/Loader';
 import * as actions from '../../store/actions/index';
+import ErrorBoundary from '../../hoc/ErrorBoundary/ErrorBoundary'; 
 
 class GetStores extends Component{
     
@@ -39,7 +40,9 @@ class GetStores extends Component{
         return (
             <Aux>
                 <h1>Stores</h1>
-                {html}
+                <ErrorBoundary>
+                    {html}
+                </ErrorBoundary>
             </Aux>
         );
     }
@@ -61,7 +64,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchStores: (token, params) => dispatch(actions.fetchStores(token, params)),
-        fetchSlots: (token) => dispatch(actions.fetchSlots(token))
+        fetchSlots: (token) => dispatch(actions.fetchSlots(token)),
+        resetBookingProps: () => dispatch(actions.resetBookingProps())
     };
 };
 
