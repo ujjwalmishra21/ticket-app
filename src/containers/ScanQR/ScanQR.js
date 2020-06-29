@@ -51,8 +51,8 @@ class ScanQR extends Component{
                 </div>
             );
         }
-        if(this.props.loading){
-            error = (
+        if(this.props.error){
+            message = (
                 <div className='qr-reader-text-section'>
                     {this.props.error}
                 </div>
