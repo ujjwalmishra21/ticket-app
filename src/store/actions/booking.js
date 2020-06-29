@@ -158,20 +158,20 @@ export const completeBookingVerificationFail = (error) => {
 
 export const completeBookingVerification = (token, data) => {
     return dispatch => {
-        dispatch(fetchQRCodeStart());
+        dispatch(completeBookingVerificationStart());
 
         const config = { headers: {'x-auth': token}};
 
         axios.post('/completeBookingVerification', data, config)
             .then(response => {
                 if(response.data.status === 'success'){
-                    dispatch(fetchQRCodeSuccess(response.data.message));
+                    dispatch(completeBookingVerificationSuccess(response.data.message));
                 }else{
-                    dispatch(fetchQRCodeFail(response.data.message));
+                    dispatch(completeBookingVerificationFail(response.data.message));
                 }
             })
             .catch(err => {
-                dispatch(fetchQRCodeFail(err.message));
+                dispatch(completeBookingVerificationFail(err.message));
             });
     };
 };

@@ -8,16 +8,20 @@ import Loader from '../../components/UI/Loader/Loader';
 
 class ScanQR extends Component{
     state = {
-        data: null
+        data: null,
+        message: null
     }
 
-    handleScan = data => {
+    handleScan = (data) => {
         
         if (data) {
           this.setState({
             data: data
           });
-          this.props.completeBookingVerification(this.props.token, {qr_data: this.state.data})
+          this.props.completeBookingVerification(this.props.token, {qr_data: this.state.data});
+          this.setState({
+              message: this.props.message
+          });
         }
     }
     handleError = err => {
@@ -37,11 +41,12 @@ class ScanQR extends Component{
             )
         let message = null;
         let error = null;
-        if(this.props.message){
+        console.log("MESSAGE-----------------------" + this.props.message);
+        if(this.state.message){
            
             message = (
                 <div className='qr-reader-text-section'>
-                    {this.props.message}
+                    {this.state.message}
                 </div>
             );
         }else{

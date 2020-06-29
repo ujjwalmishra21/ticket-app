@@ -86,7 +86,7 @@ const completeBookingVerificationSuccess = (state, action) => {
 const completeBookingVerificationFail = (state, action) => {
     return updatedObject(state, {
         loading: false,
-        message: action.message
+        error: action.error
     });
 };
 
