@@ -41,7 +41,7 @@ class ScanQR extends Component{
             )
         let message = null;
         let error = null;
-        console.log("MESSAGE-----------------------" + this.props.message);
+        
         if(this.state.message){
            
             message = (
