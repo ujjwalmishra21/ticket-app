@@ -11,31 +11,35 @@ import NavItem from './components/UI/NavItems/NavItem/NavItem';
 
 const asyncSignUp = asyncComponent(() => {
   return import('./containers/Signup/Signup');
-})
+});
 
 const aysncLogin = asyncComponent(() => {
   return import('./containers/Login/Login');
-})
+});
 
 const asyncOTP = asyncComponent(() => {
   return import ('./containers/OTP/OTP');
-})
+});
 
 const asyncAddStore = asyncComponent(() => {
   return import ('./containers/AddStore/AddStore');
-})
+});
 
 const asyncGetStores = asyncComponent(() => {
   return import ('./containers/GetStores/GetStores');
-})
+});
 
 const asyncMyBookings = asyncComponent(() => {
   return import ('./containers/MyBookings/MyBookings');
-})
+});
 
 const asyncGetHome = asyncComponent(() => {
   return import ('./containers/Home/Home');
-})
+});
+
+const asyncScanAndComplete = asyncComponent(() => {
+  return import ('./containers/ScanQR/ScanQR');
+});
 
 const asyncLogout = asyncComponent(() => {
   return import ('./containers/Logout/Logout');
@@ -79,7 +83,8 @@ class App extends Component {
           {name:'Home', path:'/'},
           {name:'Add Store', path:'/addStore'},
           {name:'Get Store', path:'/getStore'},
-          {name:'My Bookings', path:'/myBookings'},
+          {name:'Store Bookings', path:'/myBookings'},
+          {name:'Scan & Complete', path:'/scanAndComplete'},
           {name: 'Logout', path:'/logout'},
         ];
         addStore = <Route path="/addStore" component={asyncAddStore} /> ;
@@ -98,6 +103,7 @@ class App extends Component {
             {addStore}
             <Route path="/getStore" component={asyncGetStores} />
             <Route path="/myBookings" component={asyncMyBookings} />
+            <Route path="/scanAndComplete" component={asyncScanAndComplete} />
             <Route path="/logout" component={asyncLogout} />
             <Route path="/" exact component={asyncGetHome}/>
             <Redirect to="/"/>

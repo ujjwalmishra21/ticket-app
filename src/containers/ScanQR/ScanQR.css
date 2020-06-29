@@ -1,0 +1,25 @@
+.qr-reader-section{
+    width: 90%;
+    height: 60%;
+    margin-top: -195px;
+}
+.qr-reader-text-section{
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    width: 90%;
+    background-color: #3e3a3aab;
+    color: #ffffff;
+    height: 40px;
+    line-height: 3rem;
+}
+.qr-reader-error{
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    width: 90%;
+    background-color: #fb5555ab;
+    color: #ffffff;
+    height: 40px;
+    line-height: 3rem;
+}
