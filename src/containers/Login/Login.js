@@ -94,16 +94,10 @@ class Login extends Component{
             redirectPath = (<Redirect to="/otp" />)
         }
         
-        let imageClass = {
-            padding: '20px',
-            margin: '30px',
-            backgroundColor: 'white'
-        };
 
         return (
             <Aux>
                 {redirectPath}
-                <Image src='https://img.icons8.com/officel/80/000000/booking.png' size='small' circular='true' bordered='true' class={imageClass} />
                 {form}
             </Aux>
         );

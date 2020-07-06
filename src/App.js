@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter, Redirect, Link} from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 // import Signup from './containers/Signup/Signup';
 import { connect } from 'react-redux';
-import { Image } from 'semantic-ui-react';
 import './App.css';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import NavItems from './components/UI/NavItems/NavItems';
+import Carousel from './components/UI/Carousel/Carousel';
+
 import * as action from './store/actions/index';
-import NavItem from './components/UI/NavItems/NavItem/NavItem';
 
 const asyncSignUp = asyncComponent(() => {
   return import('./containers/Signup/Signup');
@@ -73,10 +73,11 @@ class App extends Component {
         <Redirect to="/"/>
        </Switch>
     );
+    let data  = null;
     if(this.props.isAuthenticated){
       
       let addStore = null;
-
+      
       if(parseInt(this.props.userData.type) === 1){
         
         navList = [
@@ -110,23 +111,42 @@ class App extends Component {
           </Switch>
       );
      
+
     
       
+    }else{
+      data = [{
+        text: 'OTP based login',
+        image: 'https://img.icons8.com/cute-clipart/64/000000/authentication-message.png'
+      },
+      { 
+        text:'Stores on the basis of location',
+        image: 'https://img.icons8.com/officel/80/000000/worldwide-location.png'
+      },
+      {
+        text:'QR code based booking verification',
+        image: 'https://img.icons8.com/dusk/64/000000/qr-code.png'
+      }];
+     
     }
 
     return (
       <div className="App">
        
           {/* <div className="Navbar"> */}
+         
             <NavItems navList={navList}>
+            { data && data.length > 0 &&
+                <Carousel data={data}/>
+            }
             <header className="App-header">
-              
+          
             {route}
             </header>
             </NavItems>
           {/* </div> */}
         
-         
+           
          
           {/* <Link className="ui button" to="/signup">Signup</Link>
           <Link className="ui button" to="/login">Login</Link>

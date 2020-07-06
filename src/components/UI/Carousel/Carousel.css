@@ -1,0 +1,23 @@
+.image{
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    width: 80px;
+}
+.text-slide{
+    height: auto;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.slide{
+    width: 80%;
+    margin-top: 50px;
+    color: #000000;
+    padding: 13px;
+    line-height: 2rem;
+    height: 100px;
+    text-align: center;
+    
+}

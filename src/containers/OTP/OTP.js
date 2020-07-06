@@ -14,7 +14,8 @@ class OTP extends Component {
             otp:{
             elementType: 'input',
             elementConfig: {
-                type: 'text'
+                type: 'text',
+                placeholder: 'Enter OTP'
             },
             value:'',
             validation:{

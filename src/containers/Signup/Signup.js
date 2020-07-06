@@ -161,7 +161,6 @@ class Signup extends Component {
 
         return(
            <Aux>
-                <Image src='https://img.icons8.com/officel/80/000000/booking.png' size='small' circular={true} bordered={true} class={imageClass} />
                 {form}
                 {error}
            </Aux>
