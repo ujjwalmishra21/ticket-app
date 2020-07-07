@@ -110,7 +110,7 @@ class Signup extends Component {
         }
         
         let form = (
-            <Form>
+            <Form style={{marginTop:'-240px'}}>
                 <Select 
                     className="select"
                     value={this.state.type}
@@ -142,11 +142,6 @@ class Signup extends Component {
             </Form>
         );
 
-        let imageClass = {
-            padding: '20px',
-            margin: '30px',
-            backgroundColor: 'white'
-        };
         let error = null;
         if(this.props.error){
             error = <p style={{color:'red'}}>{this.props.error}</p>

@@ -135,7 +135,7 @@ class AddStore extends Component{
         message: null
     };
     componentDidMount(){
-        this.props.resetBookingProps();
+        this.props.onResetBookingProps();
         this.props.onfetchSlots(this.props.token);
     }
     handleChange = (type, value) =>{

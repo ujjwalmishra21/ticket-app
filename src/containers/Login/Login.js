@@ -69,7 +69,7 @@ class Login extends Component{
             })
         }
         let form = (
-            <Form>
+            <Form style={{marginTop:'-260px'}}>
                { formElementAr.map((formEle) => {
                     return (
                         <Input
