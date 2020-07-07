@@ -11,6 +11,7 @@ class Home extends Component{
     }
     componentDidMount(){
         this.props.getLocation();
+        this.props.onResetBookingProps();
         
     }
 
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getLocation: () => dispatch(actions.fetchLocation())
+        getLocation: () => dispatch(actions.fetchLocation()),
+        onResetBookingProps: () => dispatch(actions.resetBookingProps())
     };
 };
 

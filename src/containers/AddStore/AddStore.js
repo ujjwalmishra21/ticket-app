@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Form, Button} from 'semantic-ui-react';
 import Select from 'react-select';
-import {Redirect} from 'react-router-dom';
 import Input from '../../components/UI/Input/Input';
 import Loader from '../../components/UI/Loader/Loader';
 import './AddStore.css'
@@ -132,10 +131,11 @@ class AddStore extends Component{
         open_time: null,
         close_time: null,
         formIsValid: false,
-        submit: false
+        submit: false,
+        message: null
     };
     componentDidMount(){
-     
+        this.props.resetBookingProps();
         this.props.onfetchSlots(this.props.token);
     }
     handleChange = (type, value) =>{
@@ -145,7 +145,7 @@ class AddStore extends Component{
         });
         
     };
-    onSubmit = (event) => {
+    onSubmit = async (event) => {
         event.preventDefault();
         let data = {};
 
@@ -157,9 +157,22 @@ class AddStore extends Component{
         data['open_time'] = this.state.open_time.value;
         data['close_time'] = this.state.close_time.value;
        
-        this.props.onAddStore(this.props.token, data);
+        await this.props.onAddStore(this.props.token, data);
+        setTimeout(this.showAlert, 2000)
+       
        
     };
+
+    showAlert = () => {
+        if(this.props.response &&this.props.response.status === 'success'){
+            let message = 'Your request submitted successfully. We will let you know once your request is confirmed.'; 
+            this.setState({message: message});
+        }else{
+            let message = 'Try after sometime.'
+            this.setState({message: message});
+        }
+    }
+
     changeHandler = (event, inputIdentifier) => {
         
         const updatedFormElement= updatedObject(this.state.addStoreForm[inputIdentifier], {
@@ -250,10 +263,11 @@ class AddStore extends Component{
         if(this.props.loading){
             form = <Loader />
         }
-        if(this.props.response &&this.props.response.status === 'success'){
-            let message = 'Your request submitted successfully. We will let you know once your request is confirmed.'; 
-            alert(message);
-        }        
+        
+        if(this.state.message){
+            alert(this.state.message);
+        }
+        
         return (
             <Aux>
                 <h1>Add store</h1>
@@ -277,7 +291,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAddStore: (token,data) => dispatch(actions.addStore(token,data)),
-        onfetchSlots: (token) => dispatch(actions.fetchSlots(token))
+        onfetchSlots: (token) => dispatch(actions.fetchSlots(token)),
+        onResetBookingProps: () => dispatch(actions.resetBookingProps())
     };
 }
 

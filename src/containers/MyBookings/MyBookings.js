@@ -11,6 +11,7 @@ import * as actions from '../../store/actions';
 class MyBookings extends Component {
  
     componentDidMount(){
+        this.props.onResetBookingProps();
         this.props.getBookings(this.props.token);
     }
 
@@ -59,7 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getBookings: (token) => dispatch(actions.fetchBooking(token))
+        getBookings: (token) => dispatch(actions.fetchBooking(token)),
+        onResetBookingProps: () => dispatch(actions.resetBookingProps())
     };
 };
 
